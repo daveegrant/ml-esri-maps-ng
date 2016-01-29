@@ -1,0 +1,12 @@
+.map-search {
+  height: 500px;
+}
+.map-detail {
+  height: 300px;
+}
+.map-label-coordinates {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  background-color: gray;
+}

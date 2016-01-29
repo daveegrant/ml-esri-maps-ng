@@ -1,0 +1,40 @@
+{
+  "name": "ml-esri-maps-ng",
+  "version": "0.0.1",
+  "description": "AngularJS directives with Esri Maps integration for use with MarkLogic REST-api.",
+  "dependencies": { },
+  "devDependencies": {
+    "gulp": "3.8.x",
+    "gulp-concat": "^2.2.0",
+    "gulp-jshint": "^1.5.5",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^0.2.1",
+    "gulp-print": "^1.1.0",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-sourcemaps": "^1.5.2"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+  },
+  "license": "Apache-2.0",
+  "directories": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daveegrant/ml-esri-maps-ng.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "marklogic",
+    "esri-maps"
+  ],
+  "author": "daveegrant",
+  "bugs": {
+    "url": "https://github.com/daveegrant/ml-esri-maps-ng/issues"
+  },
+  "homepage": "https://github.com/daveegrant/ml-esri-maps-ng"
+}
