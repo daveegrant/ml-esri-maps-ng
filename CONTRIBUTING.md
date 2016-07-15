@@ -1,4 +1,4 @@
-# Contributing to ml-esir-maps-ng
+# Contributing to ml-esri-maps-ng
 
 ml-esri-maps-ng welcomes new contributors. This document will guide you
 through the process.
