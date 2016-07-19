@@ -18,21 +18,23 @@
       scope: {
         geometry: '=',
         baseMap: '=',
-        zoom: '='
+        zoom: '=',
+        mapId: '='
       },
-      template: '<div id="detailMap" class="map-detail"></div>',
+      templateUrl: '/templates/detail-map.html',
       controller: 'mlEsriDetailMapController',
       controllerAs: 'ctrl'
     };
   }
 
-  MLEsriDetailMapController.$inject = ['$scope'];
-  function MLEsriDetailMapController($scope) {
+  MLEsriDetailMapController.$inject = ['$scope', '$timeout'];
+  function MLEsriDetailMapController($scope, $timeout) {
     var ctrl = this;
     var geometryData = [];
     var i=0;
 
     // Settings
+    ctrl.mapId = $scope.mapId ? $scope.mapId : 'detail-map-1';
     ctrl.baseMap = $scope.baseMap ? $scope.baseMap : 'national-geographic';
     ctrl.mapZoom = $scope.zoom ? $scope.zoom : 6;
     ctrl.mapGeometry = null;
@@ -60,7 +62,13 @@
       }
     }
 
-    initMap(geometryData);
+    // Have to wait for scope value of <mapId> to be updated in view
+    // before the map can be initialized.
+    $scope.$watch('mapId', function(newValue) {
+      $timeout(function(){
+        initMap(geometryData);
+      }, 300);
+    });
 
     /**
     *  Initializes the map with a single feature layer for locations.
@@ -81,7 +89,7 @@
         processGeoData(geoData);
 
         ctrl.map = new Map(
-          'detailMap', {
+          ctrl.mapId, {
             basemap: ctrl.baseMap,
             zoom: ctrl.mapZoom,
             smartNavigation: false

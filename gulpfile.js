@@ -11,7 +11,9 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps'),
-    info = require('gulp-print');
+    info = require('gulp-print'),
+    html2Js = require('gulp-ng-html2js'),
+    minifyHtml = require('gulp-minify-html');
 
 gulp.task('jshint', function() {
   return gulp.src([
@@ -71,4 +73,22 @@ gulp.task('styles', ['scripts'], function() {
   ;
 });
 
-gulp.task('default', ['styles']);
+gulp.task('templates', function() {
+  return gulp.src([ './src/**/*.html' ])
+    .pipe(minifyHtml({
+      empty: true,
+      spare: true,
+      quotes: true
+    }))
+    .pipe(html2Js({
+      moduleName: 'ml.esri-maps.tpls',
+      prefix: '/'
+    }))
+    .pipe(concat('ml-esri-maps-ng-tpls.js'))
+    .pipe(gulp.dest('dist'))
+    .pipe(rename('ml-esri-maps-ng-tpls.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['styles', 'templates']);
