@@ -4,6 +4,7 @@
   "description": "AngularJS directives with Esri Maps integration for use with MarkLogic REST-api.",
   "main": [
     "dist/ml-esri-maps-ng.js",
+    "dist/ml-esri-maps-ng-tpls.js",
     "dist/ml-esri-maps-ng.css"
   ],
   "dependencies": {
