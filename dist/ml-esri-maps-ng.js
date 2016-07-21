@@ -399,23 +399,11 @@
           new Color([76, 230, 0, 0.75])   // lime-green
         ];
 
-        // Outer symbol for group marker
-        ctrl.oGrpSym = new SimpleMarkerSymbol()
-          .setColor( ctrl.markerColors[0] )
-          .setOutline(new SimpleLineSymbol().setStyle(SimpleLineSymbol.STYLE_DASH))
-          .setSize(45);
-
         // Inner symbol for group marker
         ctrl.iGrpSym = new SimpleMarkerSymbol()
           .setColor( new Color([214, 214, 214, 0.50]) )
           .setOutline( new SimpleLineSymbol().setStyle(SimpleLineSymbol.STYLE_DASH) )
           .setSize(25);
-
-        // Text symbol for group marker
-        ctrl.textGrpSym = new TextSymbol()
-          .setColor( new Color([0, 0, 0, 1.0]) )
-          .setVerticalAlignment('middle')
-          .setFont( new Font().setWeight(Font.WEIGHT_BOLD) );
 
         // Handle layer updates based on current extent.
         ctrl.map.on('extent-change', function(evt) {
@@ -527,7 +515,10 @@
 
             // Outer shape
             graphic = {
-              'symbol': ctrl.oGrpSym.setColor( ctrl.markerColors[ i % ctrl.markerColors.length ] ),
+              'symbol': new SimpleMarkerSymbol()
+                .setColor( ctrl.markerColors[ i % ctrl.markerColors.length ] )
+                .setOutline(new SimpleLineSymbol().setStyle(SimpleLineSymbol.STYLE_DASH))
+                .setSize(45),
               'geometry': polygon.getCentroid()
             };
             graphic.symbol.setSize(outerSize);
@@ -545,7 +536,11 @@
 
             // Text in marker
             var graphicText = {
-              'symbol': ctrl.textGrpSym.setText(box.count),
+              'symbol': new TextSymbol()
+                .setColor( new Color([0, 0, 0, 1.0]) )
+                .setVerticalAlignment('middle')
+                .setFont( new Font().setWeight(Font.WEIGHT_BOLD) )
+                .setText(box.count),
               'geometry': polygon.getCentroid()
             };
 
