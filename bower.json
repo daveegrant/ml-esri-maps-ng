@@ -1,6 +1,6 @@
 {
   "name": "ml-esri-maps-ng",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "AngularJS directives with Esri Maps integration for use with MarkLogic REST-api.",
   "main": [
     "dist/ml-esri-maps-ng.js",
